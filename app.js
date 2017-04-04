@@ -8,6 +8,7 @@ var sassMiddleware = require('node-sass-middleware');
 
 var routes = require('./config/routes');
 var locals = require('./config/locals');
+var db = require('./config/db');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);
 locals(app);
+db(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

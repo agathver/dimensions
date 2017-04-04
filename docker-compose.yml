@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "3000:3000"
+    environment:
+      MONGO_URI: 'mongodb://mongodb/dimensions'
+  mongodb:
+    image: "mongo:3.4"
