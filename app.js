@@ -13,7 +13,14 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
+// use ejs as default engine
 app.set('view engine', 'ejs');
+
+// disable view cache for development
+if (app.get('env') === 'development') {
+  app.set('view cache', false);
+}
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
