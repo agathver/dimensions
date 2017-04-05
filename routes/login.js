@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   let username = req.body['username'];
-  let password = req.body['username'];
+  let password = req.body['password'];
 
   userlib.login(username, password).then((user) => {
     // login successful

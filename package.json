@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "serve": "nodemon ./bin/www",
+    "test": "echo 'No tests yet!'"
   },
   "dependencies": {
     "bcrypt": "~1.0.2",
@@ -16,11 +18,15 @@
     "mongoose": "~4.9.3",
     "morgan": "~1.8.1",
     "node-sass-middleware": "~0.9.8",
+    "read": "^1.0.7",
     "serve-favicon": "~2.4.2",
     "session-file-store": "~1.0.0",
     "twig": "~1.10.4"
   },
   "engines": {
     "node": "7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

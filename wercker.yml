@@ -1,0 +1,36 @@
+# The container definition we want to use for developing our app
+box:
+  id: node:7.8
+  ports:
+    - 3000
+
+services:
+  - mongo:3.4
+
+dev:
+  steps:
+    - script:
+        name: setup node env
+        code: |
+          export NODE_DEBUG=*
+          export NODE_ENV=development
+          export MONGO_URI=mongodb://mongo/dimensions
+    - npm-install
+    - internal/watch:
+        code: npm run-script serve
+
+build:
+  steps:
+    - script:
+        name: setup node env
+        code: |
+          export NODE_DEBUG=*
+          export NODE_ENV=production
+          export MONGO_URI=mongodb://mongo/dimensions
+    - npm-install
+    - npm-test
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
