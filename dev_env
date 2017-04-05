@@ -1,0 +1,13 @@
+case $1 in
+    "start" )
+    docker start dimensions-db;;
+    "stop" )
+    docker stop dimensions-db;;
+    "init" )
+    docker create --name dimensions-db -p 127.0.0.1:27017:27017 mongo:3.4;;
+    "destroy" )
+    docker rm -f dimensions-db;;
+    "fixtures" )
+    echo "No fixtures loaded";;
+esac
+

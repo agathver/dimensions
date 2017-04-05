@@ -13,8 +13,8 @@
     {% endif %}
     <form class="login-form" method="post">
       <input id="_csrftoken" type="hidden" value="randomtextshouldgohere" />
-      <input id="username" name="username" type="text" placeholder="Username" />
-      <input id="password" name="password" type="password" placeholder="Password" />
+      <input required id="username" name="username" type="text" placeholder="Username" />
+      <input required id="password" name="password" type="password" placeholder="Password" />
       <button type="submit">Login</button>
       <p class="message"><a href="#">Forgot password ?</a></p>
     </form>

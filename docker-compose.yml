@@ -3,8 +3,10 @@ services:
   web:
     build: .
     ports:
-     - "3000:3000"
+      - "3000:3000"
     environment:
       MONGO_URI: 'mongodb://mongodb/dimensions'
+    depends_on:
+      - 'mongodb'
   mongodb:
     image: "mongo:3.4"

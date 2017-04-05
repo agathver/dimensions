@@ -12,13 +12,15 @@
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
+    "express-session": "~1.15.2",
     "mongoose": "~4.9.3",
     "morgan": "~1.8.1",
     "node-sass-middleware": "~0.9.8",
     "serve-favicon": "~2.4.2",
+    "session-file-store": "~1.0.0",
     "twig": "~1.10.4"
   },
   "engines": {
-    "node": "6.10.2"
+    "node": "7"
   }
 }
