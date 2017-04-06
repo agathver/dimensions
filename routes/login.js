@@ -12,11 +12,10 @@ router.post('/', (req, res) => {
   let password = req.body['password'];
 
   userlib.login(username, password).then((user) => {
-    // login successful
     res.redirect('/dashboard');
   }).catch((err) => {
     res.render('login.html.twig', {
-      error: 'Username or password incorrect'
+      error: err
     });
   });
 });
