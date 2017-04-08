@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userlib = require('../lib/user');
+const auth = require('../lib/auth');
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -12,6 +13,8 @@ router.post('/', (req, res) => {
   let password = req.body['password'];
 
   userlib.login(username, password).then((user) => {
+    return auth.store(req, user);
+  }).then(() => {
     res.redirect('/dashboard');
   }).catch((err) => {
     res.render('login.html.twig', {

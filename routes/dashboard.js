@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const auth = require('../lib/auth');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('dashboard');
+router.get('/', auth.authenticated, function(req, res) {
+  res.render('dashboard.html.twig');
 });
 
 module.exports = router;

@@ -11,11 +11,12 @@
     "bcrypt": "~1.0.2",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
+    "csurf": "~1.9.0",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "express-session": "~1.15.2",
-    "inquirer": "^3.0.6",
+    "inquirer": "~3.0.6",
     "mongoose": "~4.9.3",
     "morgan": "~1.8.1",
     "node-sass-middleware": "~0.9.8",
@@ -28,6 +29,7 @@
     "node": "7"
   },
   "devDependencies": {
+    "eslint": "~3.19.0",
     "nodemon": "^1.11.0"
   }
 }
