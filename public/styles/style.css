@@ -1779,6 +1779,73 @@ body {
         backface-visibility: hidden;
         perspective: 1000px; }
 
+.dashboard .event .event-info {
+  margin-top: 1em;
+  list-style: none;
+  padding: 0; }
+  .dashboard .event .event-info i.material-icons {
+    vertical-align: middle;
+    margin-right: 5px; }
+
+.dashboard .user-card {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+  .dashboard .user-card .card-body {
+    position: relative; }
+    .dashboard .user-card .card-body .user-image {
+      text-align: center; }
+      .dashboard .user-card .card-body .user-image img {
+        height: 96px;
+        width: 96px;
+        border-radius: 50%; }
+        @media (min-width: 721px) {
+          .dashboard .user-card .card-body .user-image img {
+            height: 128px;
+            width: 128px; } }
+    .dashboard .user-card .card-body .user-edit-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px; }
+      .dashboard .user-card .card-body .user-edit-btn i.material-icons {
+        font-size: 18px; }
+    .dashboard .user-card .card-body .user-info h3,
+    .dashboard .user-card .card-body .user-info h4 {
+      text-align: center; }
+    .dashboard .user-card .card-body .user-info ul {
+      list-style: none;
+      padding-left: 0; }
+      .dashboard .user-card .card-body .user-info ul li {
+        list-style: none; }
+        .dashboard .user-card .card-body .user-info ul li i.material-icons {
+          margin-right: 0.25em;
+          line-height: 24px;
+          vertical-align: middle; }
+        .dashboard .user-card .card-body .user-info ul li span {
+          line-height: 24px;
+          vertical-align: middle; }
+
+.dashboard .user-stream .post {
+  background-color: #fff;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+  .dashboard .user-stream .post .post-content .post-image {
+    max-height: 60%; }
+    .dashboard .user-stream .post .post-content .post-image img {
+      width: 100%; }
+  .dashboard .user-stream .post .post-content .post-body {
+    padding: 18px; }
+  .dashboard .user-stream .post .post-content .post-footer {
+    border-top: 1px solid #ddd; }
+
+.dashboard .user-secondary-stream .reminders {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: rgb(255,255,255) !important; }
+  .dashboard .user-secondary-stream .reminders h2 {
+    margin: 0;
+    padding: 16px; }
+  .dashboard .user-secondary-stream .reminders .list-group-item-heading i.material-icons {
+    vertical-align: middle;
+    margin-right: 5px; }
+
 /* animations */
 @keyframes shake {
   10%,

@@ -17,6 +17,7 @@
     "express": "~4.15.2",
     "express-session": "~1.15.2",
     "inquirer": "~3.0.6",
+    "isemail": "~2.2.1",
     "mongoose": "~4.9.3",
     "morgan": "~1.8.1",
     "node-sass-middleware": "~0.9.8",

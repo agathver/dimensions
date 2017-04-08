@@ -1,47 +1,139 @@
 {% extends '_layouts/base.html.twig' %}
-
 {% block title %}Dashboard - Dimensions{% endblock %}
-{% block pageid %}dashboard{% endblock %}
+{% block pageid %}dashboard{% endblock %} {% block body %}
+<div class="has-sidebar">
+  <header>
+    <nav class="navbar navbar-default color--blue-500 shadow-2dp">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/dashboard">Dimensions</a>
+        </div>
 
-{% block body %}
-    <div class="dimensions-layout__container has-sidebar">
-        <header>
-            <nav class="navbar navbar-default color--blue-500 shadow-2dp">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/dashboard">Dimensions</a>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="hide-xs hide-sm" id="">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    Hi, {{ user.name }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/logout">Log out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-        </header>
-        <main class="dimensions-dashboard-container container">
-            <div class="user-dashboard" style="max-width:800px">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="hide-xs hide-sm" id="">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                 Hi, {{ user.name | capitalize }} <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/logout">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  <main class="dashboard-container container">
+    <div class="user-dashboard">
+      <div class="col-md-8 user-stream">
+        <div class="post notice">
+          <div class="post-content">
+            <div class="post-image">
+              <img src="https://unsplash.it/500/350" alt="Loading image...">
             </div>
-        </main>
-        <aside class="sidebar">
-        </aside>
-    </div>
-{% endblock %}
+            <div class="post-body">
+              <h3>Lorem Ipsum Dolor</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <footer class="post-footer">
+              <div class="btn-group btn-sm">
+                <button class="btn btn-flat btn-sm"><i class="material-icons">add_alert</i></button>
+                <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="post notice">
+          <div class="post-content">
+            <div class="post-body">
+              <h3>Lorem Ipsum Dolor</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <p><a href="#">Read more</a></p>
+            </div>
+            <footer class="post-footer">
+              <div class="btn-group btn-sm">
+                <button class="btn btn-flat btn-sm"><i class="material-icons">add_alert</i></button>
+                <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="post upcoming-events">
+          <div class="post-content">
+            <div class="post-body">
+              <h3>Events this week</h3>
+              <div class="list-group event-list">
+                <div class="list-group-item event">
+                  <div class="row-content">
+                    <h4 class="list-group-item-heading">Tile with avatar</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p>
+                    <ul class="event-info">
+                      <li><i class="material-icons">schedule</i></li>
+                      <li><i class="material-icons">place</i></li>
+                    </ul>
+                    <p><a href="#">Details</a></p>
+                  </div>
+                </div>
+                <div class="list-group-separator"></div>
+                <div class="list-group-item event">
+                  <div class="row-content">
+                    <h4 class="list-group-item-heading">Tile with another avatar</h4>
+                    <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+                    <ul class="event-info">
+                      <li><i class="material-icons">schedule</i></li>
+                      <li><i class="material-icons">place</i></li>
+                    </ul>
+                    <p><a href="#">Details</a></p>
+                  </div>
+                </div>
+                <div class="list-group-separator"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="user-secondary-stream col-md-4">
+        <div class="reminders">
+          <h2>Reminders</h2>
+          <div class="list-group event-list">
+            <div class="list-group-item reminder-item event">
+              <div class="row-content">
+                <h4 class="list-group-item-heading">
+                  <i class="material-icons">event</i>Event
+                </h4>
+                <ul class="event-info">
+                  <li><i class="material-icons">schedule</i></li>
+                  <li><i class="material-icons">place</i></li>
+                </ul>
+                <p><a href="#">Details</a></p>
+              </div>
+            </div>
+            <div class="list-group-separator"></div>
+            <div class="list-group-item reminder-item event">
+              <div class="row-content">
+                <h4 class="list-group-item-heading">
+                <i class="material-icons">info</i>Tile with another avatar</h4>
+                <p><a href="#">Details</a></p>
+              </div>
+            </div>
+            <div class="list-group-separator"></div>
+          </div>
+        </div>
+      </div>
+  </main>
+  <aside class="sidebar">
+  </aside>
+  </div>
+  {% endblock %}

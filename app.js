@@ -21,6 +21,7 @@ app.set('view engine', 'ejs');
 
 // disable view cache for development
 if (app.get('env') === 'development') {
+  require('twig').cache(false);
   app.set('view cache', false);
   app.use(logger('dev'));
 }
@@ -32,18 +33,17 @@ if (app.get('env') === 'production') {
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  sourceMap: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser(secrets.secret));
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  sourceMap: true
-}));
 app.use(session({
   secret: secrets.secret,
   resave: true,
