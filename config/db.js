@@ -11,4 +11,4 @@ module.exports = function () {
     console.error('Cannot connect to db' + err); // eslint-disable-line no-console
     //process.exit(1);
   });
-}
+};
