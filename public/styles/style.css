@@ -1846,6 +1846,16 @@ body {
     vertical-align: middle;
     margin-right: 5px; }
 
+.admin .listing table tr .actions .btn {
+  visibility: hidden;
+  padding: 4px;
+  margin: 0; }
+  .admin .listing table tr .actions .btn i.material-icons {
+    font-size: 16px; }
+
+.admin .listing table tr:hover .actions .btn {
+  visibility: visible; }
+
 /* animations */
 @keyframes shake {
   10%,

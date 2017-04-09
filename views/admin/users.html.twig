@@ -1,0 +1,40 @@
+{% extends '../_layouts/dashboard.html.twig' %}
+{% block title %}Users{% endblock %}
+
+{% block pageid %}admin-user admin{% endblock %}
+
+{% block main %}
+<div class="listing">
+  <div class="toolbar"></div>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Permissions</th>
+    </tr>
+    {% for aUser in users %}
+    <tr>
+      <td>
+        <a href="user/{{ aUser.userId }}">{{ aUser.userId }}</a>
+        <span class="actions">
+          <a class="btn btn-flat btn-xs" href="#userInfo" data-toggle="modal">
+            <i class="material-icons">info</i>
+          </a>
+          <a class="btn btn-flat btn-xs" href="#editUser" data-toggle="modal">
+            <i class="material-icons">edit</i>
+          </a>
+        </span>
+      </td>
+      <td>{{ aUser.firstName }} {{ aUser.lastName }}</td>
+      <td>{{ aUser.type | capitalize }}</td>
+      <td>
+        {% for group in aUser.groups %}
+        <span class="label {% if group == 'wheel' %}label-danger{% else %}label-primary{% endif %}">{{ group }}</span>
+        {% endfor %}
+      </td>
+    <tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

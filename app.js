@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const secrets = require('./config/secrets');
 const routes = require('./config/routes');
 const locals = require('./config/locals');
@@ -27,7 +28,7 @@ if (app.get('env') === 'development') {
 }
 
 if (app.get('env') === 'production') {
-  app.set('trust proxy', 2); // trust first two proxies (nginx and cloudflare) 
+  app.set('trust proxy', 2); // trust first two proxies (nginx and cloudflare)
   app.use(logger('combined'));
 }
 
@@ -44,11 +45,13 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser(secrets.secret));
+
 app.use(session({
   secret: secrets.secret,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: { secure: false },
+  store: new MongoStore({ mongooseConnection: require('mongoose').connection })
 }));
 
 app.use(auth.populate());

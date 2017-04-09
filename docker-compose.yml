@@ -2,8 +2,9 @@ version: '2'
 services:
   web:
     build: .
+    # image: "522297346251.dkr.ecr.us-east-1.amazonaws.com/dimensions:latest"
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     environment:
       MONGO_URI: 'mongodb://mongodb/dimensions'
     depends_on:

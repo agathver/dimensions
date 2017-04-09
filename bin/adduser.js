@@ -33,7 +33,7 @@ const questions = [
   },
   {
     type: 'list',
-    name: 'group',
+    name: 'type',
     message: 'Group',
     choices: [{
       name: 'Faculty',
@@ -56,7 +56,7 @@ const questions = [
   },
   {
     type: 'checkbox',
-    name: 'permissions',
+    name: 'groups',
     message: 'Additional permissions:',
     choices: [{
       name: 'Library admin',
@@ -111,8 +111,8 @@ db().then(() => {
   user.userId = answer.userId;
   user.email = answer.email;
   user.phoneNumber = answer.phoneNumber;
-  user.group = answer.group;
-  user.permissions = answer.permissions;
+  user.type = answer.type;
+  user.groups = answer.groups;
   return readPassword();
 }).then((hash) => {
   user.password = hash;
