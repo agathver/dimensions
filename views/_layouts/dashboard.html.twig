@@ -1,46 +1,141 @@
 {% extends 'base.html.twig' %}
 {% block title %}Dashboard{% endblock %}
-
+{% block pageid %}dashboard{% endblock %}
 {% block body %}
-<div class="has-sidebar">
-  <header>
-    <nav class="navbar navbar-default color--blue-500 shadow-2dp">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-            aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/dashboard">Dimensions</a>
-        </div>
+<header class="navbar navbar-default navbar-fixed-top color--blue-500 shadow-2dp">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/dashboard">Dimensions</a>
+    </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-collapse collapse" id="">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                 Hi, {{ user.firstName | capitalize }} <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="/logout">Log out</a></li>
-              </ul>
-            </li>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse collapse" id="">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Hi, {{ user.firstName | capitalize }} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/logout">Log out</a></li>
           </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</header>
+<div class="sidebar-container">
+  <div class="sidebar-overlay"></div>
+  <aside id="sidebar" class="sidebar open sidebar-colored" role="navigation">
+    <!-- Sidebar header -->
+    <div class="sidebar-header header-cover" style="background-image: url(https://unsplash.it/300/150);">
+      <!-- Top bar -->
+      <div class="top-bar"></div>
+      <!-- Sidebar toggle button -->
+      <button type="button" class="sidebar-toggle">
+            <span class="caret"></span>
+        </button>
+      <!-- Sidebar brand image -->
+      <div class="sidebar-image">
+        <img src="https://robohash.org/{{ user.UserId }}?set=set2&size=72x72">
       </div>
-      <!-- /.container-fluid -->
-    </nav>
-  </header>
-  <main class="dashboard-container container">
-    {% block main %}{% endblock %}
-  </main>
-  <aside class="sidebar">
-    {% block sidebar %}{% endblock %}
+      <!-- Sidebar brand name -->
+      <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+            john.doe@gmail.com
+            <b class="caret"></b>
+        </a>
+    </div>
+
+    <!-- Sidebar navigation -->
+    <ul class="nav sidebar-nav">
+      <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+          <li>
+            <a href="#" tabindex="-1">Profile</a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">Settings</a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">Help</a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">Exit</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="sidebar-icon md-inbox"></i> Inbox
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="sidebar-icon md-star"></i> Starred
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="sidebar-icon md-send"></i> Sent Mail
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="sidebar-icon md-drafts"></i> Drafts
+        </a>
+      </li>
+      <li class="divider"></li>
+      <li class="dropdown">
+        <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+          All Mail<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" tabindex="-1">
+              Social<span class="sidebar-badge">12</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">
+              Promo<span class="sidebar-badge">0</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          Trash<span class="sidebar-badge">3</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Spam<span class="sidebar-badge">456</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Follow Up<span class="sidebar-badge badge-circle">i</span>
+        </a>
+      </li>
+    </ul>
+    <!-- Sidebar divider -->
+    <!-- <div class="sidebar-divider"></div> -->
+
+    <!-- Sidebar text -->
+    <!--  <div class="sidebar-text">Text</div> -->
   </aside>
+  <main class="wrapper">
+    <div class="dashboard-container container-fluid">
+      {% block main %}{% endblock %}
+    </div>
+  </main>
 </div>
 {% endblock %}
