@@ -15,4 +15,9 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.post('/', function (req, res) {
+  console.log(req.body);
+  res.redirect('/admin/user');
+});
+
 module.exports = router;

@@ -4,54 +4,58 @@
 {% block body %}
 <header class="navbar navbar-default navbar-fixed-top color--blue-500 shadow-2dp">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-        aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/dashboard">Dimensions</a>
-    </div>
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+      aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/dashboard">Dimensions</a>
+  </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="navbar-collapse collapse" id="">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Hi, {{ user.firstName | capitalize }} <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="/logout">Log out</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="navbar-collapse collapse" id="">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Hi, {{ user.firstName | capitalize }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="/logout">Log out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
   </div>
 </header>
-<div class="sidebar-container">
-  <div class="sidebar-overlay"></div>
+<div class="wrapper">
+<div class="sidebar-overlay"></div>
   <aside id="sidebar" class="sidebar open sidebar-colored" role="navigation">
+
     <!-- Sidebar header -->
     <div class="sidebar-header header-cover" style="background-image: url(https://unsplash.it/300/150);">
+
       <!-- Top bar -->
       <div class="top-bar"></div>
+
       <!-- Sidebar toggle button -->
       <button type="button" class="sidebar-toggle">
-            <span class="caret"></span>
-        </button>
+        <span class="caret"></span>
+      </button>
+
       <!-- Sidebar brand image -->
       <div class="sidebar-image">
-        <img src="https://robohash.org/{{ user.UserId }}?set=set2&size=72x72">
+        <img src="https://robohash.org/{{ user.userId }}?size=96x96&bgset=bg1" />
       </div>
+
       <!-- Sidebar brand name -->
       <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-            john.doe@gmail.com
-            <b class="caret"></b>
-        </a>
+        {{ user.email }}<b class="caret"></b>
+      </a>
     </div>
 
     <!-- Sidebar navigation -->
@@ -132,10 +136,8 @@
     <!-- Sidebar text -->
     <!--  <div class="sidebar-text">Text</div> -->
   </aside>
-  <main class="wrapper">
-    <div class="dashboard-container container-fluid">
-      {% block main %}{% endblock %}
-    </div>
+  <main class="dashboard-container container-fluid">
+    {% block main %}{% endblock %}
   </main>
 </div>
 {% endblock %}

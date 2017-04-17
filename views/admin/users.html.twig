@@ -5,7 +5,11 @@
 
 {% block main %}
 <div class="listing">
-  <div class="toolbar"></div>
+  <div class="toolbar">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#useradd">
+      Add user
+    </button>
+  </div>
   <table class="table">
     <tr>
       <th>ID</th>
@@ -36,5 +40,73 @@
     <tr>
     {% endfor %}
   </table>
+</div>
+
+<!-- add user dialog -->
+<div id="useradd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add user</h4>
+      </div>
+      <div class="modal-body">
+        <form id="userform" method="POST" action="user">
+          <div class="form-group label-floating">
+              <label for="firstName" class="control-label">First name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName">
+          </div>
+          <div class="form-group label-floating">
+              <label for="lastName" class="control-label">Last name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName">
+          </div>
+          <div class="form-group label-floating">
+              <label for="email" class="control-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group label-floating">
+              <label for="phoneNumber" class="control-label">Phone number</label>
+              <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber">
+          </div>
+          <div class="form-group">
+            <label for="s1">Group</label>
+            <select id="s1" class="form-control">
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+              <option value="staff">Staff</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Additional permissions</label>
+            <div class="checkbox">
+              <label>
+                <input name="groups[]" value="academic_admin" type="checkbox" checked=""> Academics management
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input name="groups[]" value="event_admin" type="checkbox"> Event moderation
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input name="groups[]" value="noticeboard_admin" type="checkbox"> Notice board moderation
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input name="groups[]" value="wheen" type="checkbox"> Wheel
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button form="userform" value="Save" type="submit" class="btn btn-success">Save</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 {% endblock %}
