@@ -2225,6 +2225,10 @@ html, body {
   display: flex;
   flex-direction: row;
   position: relative; }
+  .dashboard header .sidebar-toggle {
+    padding: 8px; }
+  .dashboard header .navbar-brand {
+    float: none; }
   .dashboard .wrapper {
     flex-grow: 1;
     display: flex;

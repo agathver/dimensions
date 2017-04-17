@@ -18,6 +18,16 @@ html, body {
   flex-direction: row;
   position: relative;
 
+  header {
+    .sidebar-toggle {
+      padding: 8px;
+    }
+
+    .navbar-brand {
+      float: none;
+    }
+  }
+
   .wrapper {
     flex-grow: 1;
     display: flex;

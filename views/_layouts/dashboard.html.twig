@@ -6,12 +6,9 @@
   <div class="container-fluid">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+    <button type="button" class="btn color-text--white sidebar-toggle" data-toggle="collapse" data-target="#sidebar"
       aria-expanded="false">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+      <i class="material-icons">menu</i>
     </button>
     <a class="navbar-brand" href="/dashboard">Dimensions</a>
   </div>
@@ -34,7 +31,7 @@
 </header>
 <div class="wrapper">
 <div class="sidebar-overlay"></div>
-  <aside id="sidebar" class="sidebar open sidebar-colored" role="navigation">
+  <aside id="sidebar" class="sidebar open sidebar-colored collapse in" role="navigation">
 
     <!-- Sidebar header -->
     <div class="sidebar-header header-cover" style="background-image: url(https://unsplash.it/300/150);">
@@ -63,70 +60,49 @@
       <li class="dropdown">
         <ul id="settings-dropdown" class="dropdown-menu">
           <li>
-            <a href="#" tabindex="-1">Profile</a>
+            <a href="#" tabindex="-1">Account Settings</a>
           </li>
           <li>
-            <a href="#" tabindex="-1">Settings</a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">Help</a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">Exit</a>
+            <a href="#" tabindex="-1">Log out</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#">
-          <i class="sidebar-icon md-inbox"></i> Inbox
+        <a href="dashboard">
+          <i class="material-icons">dashboard</i> Dashboard
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="sidebar-icon md-star"></i> Starred
+        <a href="noticeboard">
+          <i class="material-icons">assignment</i> Noticeboard
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="sidebar-icon md-send"></i> Sent Mail
+        <a href="events">
+          <i class="material-icons">event</i> Events
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="sidebar-icon md-drafts"></i> Drafts
+        <a href="library">
+          <i class="material-icons">book</i> Library
+        </a>
+      </li>
+      <li>
+        <a href="academics">
+          <i class="material-icons">school</i> Academics
         </a>
       </li>
       <li class="divider"></li>
-      <li class="dropdown">
-        <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
-          All Mail<b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#" tabindex="-1">
-              Social<span class="sidebar-badge">12</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">
-              Promo<span class="sidebar-badge">0</span>
-            </a>
-          </li>
-        </ul>
-      </li>
+      {% if 'admin' == user.type or 'wheel' in user.groups or 'library_admin' in user.groups or 'academic_admin' in user.groups %}
       <li>
-        <a href="#">
-          Trash<span class="sidebar-badge">3</span>
+        <a href="admin">
+          <i class="material-icons">settings</i> Administration
         </a>
       </li>
+      {% endif %}
       <li>
-        <a href="#">
-          Spam<span class="sidebar-badge">456</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          Follow Up<span class="sidebar-badge badge-circle">i</span>
+        <a href="help">
+          <i class="material-icons">help</i> Help & Support
         </a>
       </li>
     </ul>
