@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
   userlib.login(username, password).then((user) => {
     return auth.store(req, user);
   }).then(() => {
-    res.redirect('/dashboard');
+    res.redirect('/');
   }).catch((err) => {
     res.render('login.html.twig', {
       error: err
