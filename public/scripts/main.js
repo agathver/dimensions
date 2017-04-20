@@ -64,7 +64,3 @@ $(document).ready(function() {
 	}
 
 })(jQuery.fn.removeClass);
-
-$(function(){
-
-});

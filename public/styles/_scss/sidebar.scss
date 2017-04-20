@@ -210,9 +210,33 @@ $sidebar-font-weight: 500;
 // Wrapper and base class
 //
 // Provide a static sidebar from which we expand to create other sidebar variations.
+.sidebar-overlay {
+    position: fixed;
+    display: none;
+    .sidebar.open+&,
+    &.active {
+      background: rgba(0, 0, 0, 0.35);
+      display: block;
+    }
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2000;
+    @media(min-width: 768px) {
+      display: none !important;
+    }
+  }
 .sidebar {
-  position: relative;
+  position: fixed;
   display: block;
+  top: 0;
+  left: 0;
+  z-index: 3000;
+  @media(min-width: 768px) {
+    position: relative;
+  }
+
   min-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
