@@ -1,0 +1,119 @@
+{% extends '_layouts/dashboard.html.twig' %}
+{% block title %}Dimensions{% endblock %}
+{% block pageid %}dashboard{% endblock %}
+
+{% block main %}
+<div class="user-dashboard">
+  <div class="user-stream col-md-offset-1 col-md-10">
+    <div class="post upcoming-events">
+      <div class="post-content">
+        <div class="post-body">
+        <h2>Upcoming events</h2>
+          {% for event in upcomingEvents %}
+          <div class="list-group event-list">
+            <div class="list-group-item event">
+              <div class="row-content">
+                <h4 class="list-group-item-heading">{{ event.name }}</h4>
+                <p class="list-group-item-text">
+                  {{ event.description }}
+                </p>
+                <ul class="event-info">
+                  <li><i class="material-icons">schedule</i> {{ event.date }}</li>
+                  <li><i class="material-icons">place</i> {{ event.place }}</li>
+                </ul>
+              </div>
+              <div class="btn-group btn-sm">
+                <a class="btn btn-flat btn-info" href="{{ event.link }}">Details</a>
+                <button class="btn btn-flat btn-sm"><i class="material-icons">add_alert</i></button>
+                <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
+              </div>
+            </div>
+            <div class="list-group-separator"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post past-events">
+      <div class="post-content">
+        <div class="post-body">
+          <h2>Past events</h2>
+          {% for event in pastEvents %}
+          <div class="list-group event-list">
+            <div class="list-group-item event">
+              <div class="row-content">
+                <h4 class="list-group-item-heading">{{ event.name }}</h4>
+                <p class="list-group-item-text">
+                  {{ event.description }}
+                </p>
+                <ul class="event-info">
+                  <li><i class="material-icons">schedule</i> {{ event.date }}</li>
+                  <li><i class="material-icons">place</i> {{ event.place }}</li>
+                </ul>
+              </div>
+              <div class="btn-group btn-sm">
+                <a class="btn btn-flat btn-info" href="{{ event.link }}">Details</a>
+                <button class="btn btn-flat btn-sm"><i class="material-icons">add_alert</i></button>
+                <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
+              </div>
+            </div>
+            <div class="list-group-separator"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if upcomingEvents is empty and pastEvents is empty %}
+      <h5>All caught up!</h5>
+      <p>Things are quiet for a while!</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if user.type == 'admin' or 'wheel' in user.groups or 'events' in user.groups %}
+<button style="position: fixed" data-toggle="modal" data-target="#eventadd" class=" floating-button btn btn-primary btn-raised btn-fab">
+  <i class="material-icons">add</i>
+</button>
+
+<div id="eventadd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Post a new event</h4>
+      </div>
+      <div class="modal-body">
+        <form id="eventform" method="POST">
+          <div class="form-group label-floating">
+            <label for="name" class="control-label">Name</label>
+            <input required type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="form-group label-floating">
+            <label for="date" class="control-label">Date and Time</label>
+            <input required type="datetime" class="form-control" id="date" name="date">
+          </div>
+          <div class="form-group label-floating">
+            <label for="place" class="control-label">Place</label>
+            <input required type="place" class="form-control" id="place" name="place">
+          </div>
+          <div class="form-group label-floating">
+            <label for="link" class="control-label">Place</label>
+            <input required type="url" class="form-control" id="link" name="link">
+          </div>
+          <div class="form-group label-floating">
+            <label for="description" class="control-label">Description</label>
+            <textarea name="description" class="form-control" rows="5" id="description"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button form="eventform" value="Save" type="submit" class="btn btn-success">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+{% endblock %}
