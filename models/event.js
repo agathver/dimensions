@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const schema = mongoose.Schema({
   name: String,
   place: String,
   date: Date,
@@ -8,4 +8,4 @@ const userSchema = mongoose.Schema({
   link: String
 });
 
-module.exports = mongoose.model('Event', userSchema);
+module.exports = mongoose.model('Event', schema);
