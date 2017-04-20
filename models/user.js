@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
     type: String,
     enum: ['library_admin', 'academic_admin', 'noticeboard', 'wheel']
   }]
-});
+}, { discriminatorKey: 'type', timestamps: true });
 
 userSchema.virtual('name').get(function () {
   return this.name.first + ' ' + this.name.last;

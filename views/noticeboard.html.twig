@@ -4,100 +4,68 @@
 
 {% block main %}
 <div class="user-dashboard">
-  <div class="user-stream col-md-8">
+  <div class="user-stream col-md-offset-1 col-md-10">
+    {% for notice in notices %}
     <div class="post notice">
       <div class="post-content">
-        <div class="post-image">
-          <img src="https://unsplash.it/500/350" alt="Loading image...">
-        </div>
         <div class="post-body">
-          <h3>Lorem Ipsum Dolor</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <h3>{{ notice.title }}</h3>
+          <p>{{ notice.content }}</p>
         </div>
         <footer class="post-footer">
           <div class="btn-group btn-sm">
-            <button class="btn btn-flat btn-sm"><i class="material-icons">add_alert</i></button>
+            {% if notice.link %}
+            <a href="{{ notice.link }}" class="btn btn-flat btn-info">Details</a>
+            {% endif %}
+            <button class="btn btn-flat btn-sm"><i class="material-icons">star</i></button>
             <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
           </div>
         </footer>
       </div>
     </div>
-    <div class="post notice">
-      <div class="post-content">
-        <div class="post-body">
-          <h3>Lorem Ipsum Dolor</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <p><a href="#">Read more</a></p>
-        </div>
-        <footer class="post-footer">
-          <div class="btn-group btn-sm">
-            <button class="btn btn-flat btn-sm"><i class="material-icons">add_alert</i></button>
-            <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
-          </div>
-        </footer>
-      </div>
-    </div>
-    <div class="post upcoming-events">
-      <div class="post-content">
-        <div class="post-body">
-          <h3>Events this week</h3>
-          <div class="list-group event-list">
-            <div class="list-group-item event">
-              <div class="row-content">
-                <h4 class="list-group-item-heading">Tile with avatar</h4>
-                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p>
-                <ul class="event-info">
-                  <li><i class="material-icons">schedule</i></li>
-                  <li><i class="material-icons">place</i></li>
-                </ul>
-                <p><a href="#">Details</a></p>
-              </div>
-            </div>
-            <div class="list-group-separator"></div>
-            <div class="list-group-item event">
-              <div class="row-content">
-                <h4 class="list-group-item-heading">Tile with another avatar</h4>
-                <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-                <ul class="event-info">
-                  <li><i class="material-icons">schedule</i></li>
-                  <li><i class="material-icons">place</i></li>
-                </ul>
-                <p><a href="#">Details</a></p>
-              </div>
-            </div>
-            <div class="list-group-separator"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="user-secondary-stream col-md-4">
-    <div class="reminders">
-      <h2>Reminders</h2>
-      <div class="list-group event-list">
-        <div class="list-group-item reminder-item event">
-          <div class="row-content">
-            <h4 class="list-group-item-heading">
-              <i class="material-icons">event</i>Event
-            </h4>
-            <ul class="event-info">
-              <li><i class="material-icons">schedule</i></li>
-              <li><i class="material-icons">place</i></li>
-            </ul>
-            <p><a href="#">Details</a></p>
-          </div>
-        </div>
-        <div class="list-group-separator"></div>
-        <div class="list-group-item reminder-item event">
-          <div class="row-content">
-            <h4 class="list-group-item-heading">
-              <i class="material-icons">info</i>Tile with another avatar</h4>
-            <p><a href="#">Details</a></p>
-          </div>
-        </div>
-        <div class="list-group-separator"></div>
-      </div>
-    </div>
+    {% endfor %}
+    {% if notices is empty %}
+      <h4>All caught up!</h4>
+      <p>Everything looks silent!</p>
+    {% endif %}
   </div>
 </div>
+
+{% if user.type == 'admin' or 'wheel' in user.groups or 'noticeboard' in user.groups %}
+<button style="position: fixed" data-toggle="modal" data-target="#noticeadd" class=" floating-button btn btn-primary btn-raised btn-fab">
+  <i class="material-icons">add</i>
+</button>
+
+<div id="noticeadd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Post a new notice</h4>
+      </div>
+      <div class="modal-body">
+        <form id="noticeform" method="POST">
+          <div class="form-group label-floating">
+            <label for="title" class="control-label">Title</label>
+            <input required type="text" class="form-control" id="title" name="title">
+          </div>
+          <div class="form-group label-floating">
+            <label for="link" class="control-label">Link</label>
+            <input type="url" class="form-control" id="link" name="link">
+          </div>
+          <div class="form-group label-floating">
+            <label for="content" class="control-label">Content</label>
+            <textarea required name="content" class="form-control" rows="5" id="content"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button form="noticeform" value="Save" type="submit" class="btn btn-success">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
 {% endblock %}

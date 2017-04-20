@@ -1,16 +1,36 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
-  name: String,
-  place: String,
-  date: Date,
-  image: String,
-  link: String,
-  attachments: [{name: String, file: String}],
+const schema = mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String,
+  },
+  link: {
+    type: String,
+  },
+  attachments: [{
+    name: {
+      type: String,
+      required: true
+    },
+    file: {
+      type: String,
+      required: true
+    }
+  }],
   createdBy: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref: 'User'
   }
-}, { timestamps: true });
+}, {
+  timestamps: true
+});
 
-module.exports = mongoose.model('Event', userSchema);
+module.exports = mongoose.model('Notice', schema);

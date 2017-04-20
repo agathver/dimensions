@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('library.html.twig');
+  res.render('academics.html.twig');
 });
 
 module.exports = router;

@@ -4,19 +4,19 @@ const router = express.Router();
 const Event = require('../models/event');
 
 /* GET home page. */
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
   Promise.all(
     [
       Event.find({
         date: {
           $gt: new Date()
         }
-      }).sort('-date -createdAt').exec(),
+      }).sort('-date -createdAt').lean().exec(),
       Event.find({
         date: {
           $lt: new Date()
         }
-      }).sort('-date -createdAt').exec(),
+      }).sort('-date -createdAt').lean().exec(),
     ])
     .then((results) => {
       let upcomingEvents = results[0] || [];
@@ -25,6 +25,8 @@ router.get('/', function (req, res) {
         upcomingEvents: upcomingEvents,
         pastEvents: pastEvents
       });
+    }).catch((err) => {
+      next(err);
     });
 });
 
