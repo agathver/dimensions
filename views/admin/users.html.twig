@@ -1,7 +1,7 @@
-{% extends '../_layouts/dashboard.html.twig' %}
+{% extends 'index.html.twig' %}
 {% block title %}Users{% endblock %}
 
-{% block pageid %}admin-user admin dashboard{% endblock %}
+{% block pageid %}user admin dashboard{% endblock %}
 
 {% block main %}
 <div class="listing">
@@ -52,7 +52,7 @@
         <h4 class="modal-title">Add user</h4>
       </div>
       <div class="modal-body">
-        <form id="userform" method="POST" action="user">
+        <form id="userform" method="POST">
           <div class="form-group label-floating">
               <label for="firstName" class="control-label">First name</label>
               <input type="text" class="form-control" id="firstName" name="firstName">
@@ -70,8 +70,8 @@
               <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber">
           </div>
           <div class="form-group">
-            <label for="s1">Group</label>
-            <select id="s1" class="form-control">
+            <label for="s1">Type</label>
+            <select id="s1" name="type" class="form-control">
               <option value="student">Student</option>
               <option value="faculty">Faculty</option>
               <option value="staff">Staff</option>
@@ -81,22 +81,22 @@
             <label>Additional permissions</label>
             <div class="checkbox">
               <label>
-                <input name="groups[]" value="academic_admin" type="checkbox" checked=""> Academics management
+                <input name="groups" value="academic_admin" type="checkbox" checked=""> Academics management
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input name="groups[]" value="event_admin" type="checkbox"> Event moderation
+                <input name="groups" value="event_admin" type="checkbox"> Event moderation
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input name="groups[]" value="noticeboard_admin" type="checkbox"> Notice board moderation
+                <input name="groups" value="noticeboard_admin" type="checkbox"> Notice board moderation
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input name="groups[]" value="wheen" type="checkbox"> Wheel
+                <input name="groups" value="wheel" type="checkbox"> Wheel
               </label>
             </div>
           </div>

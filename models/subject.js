@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
+const utils = require('../lib/utils');
 
-const subjectSchema = mongoose.Schema({
+const schema = mongoose.Schema({
   name: {
     type: String,
     required: true
+  },
+  slug: {
+    type: String,
+    unique: true
   }
 });
 
-module.exports = mongoose.model('Subject', subjectSchema);
+schema.pre('save', function (next) {
+  this.slug = utils.slugify(this.name);
+  next();
+});
+
+module.exports = mongoose.model('Subject', schema);

@@ -32,7 +32,6 @@
 <div class="wrapper">
 <div class="sidebar-overlay"></div>
   <aside id="sidebar" class="sidebar open sidebar-colored collapse in" role="navigation">
-
     <!-- Sidebar header -->
     <div class="sidebar-header header-cover" style="background-image: url(https://unsplash.it/300/150);">
 
@@ -55,6 +54,7 @@
       </a>
     </div>
 
+    {% block sidebar %}
     <!-- Sidebar navigation -->
     <ul class="nav sidebar-nav">
       <li class="dropdown">
@@ -101,7 +101,7 @@
       </li>
       {% endif %}
       <li>
-        <a href="help">
+        <a id="help" href="#">
           <i class="material-icons">help</i> Help & Support
         </a>
       </li>
@@ -111,6 +111,7 @@
 
     <!-- Sidebar text -->
     <!--  <div class="sidebar-text">Text</div> -->
+    {% endblock %}
   </aside>
   <main class="dashboard-container container-fluid">
     {% block main %}{% endblock %}

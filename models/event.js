@@ -5,7 +5,11 @@ const schema = mongoose.Schema({
   place: String,
   date: Date,
   image: String,
-  link: String
-});
+  link: String,
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
+}, { timestamps: true });
 
 module.exports = mongoose.model('Event', schema);

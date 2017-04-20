@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const flash = require('express-flash');
 const secrets = require('./config/secrets');
 const routes = require('./config/routes');
 const locals = require('./config/locals');
@@ -53,6 +54,8 @@ app.use(session({
   cookie: { secure: false },
   store: new MongoStore({ mongooseConnection: require('mongoose').connection })
 }));
+
+app.use(flash());
 
 app.use(auth.populate());
 
