@@ -84,6 +84,37 @@ Server is based on docker so you can run the production server wherever docker r
 2. `docker-compose up`
    Site should be live at http://localhost:3000
 
+## Reverse Proxy
+
+YOu can use a reverse proxy to increase performance and perform load balancing between workers. We would recommend using [nginx](https://nginx.org).
+
+Sample nginx config:
+````
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g
+                 inactive=60m use_temp_path=off;
+
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name dimensions.cetb.in;
+
+	location / {
+		proxy_cache my_cache;
+                proxy_pass http://127.0.0.1:3000;
+		proxy_cache_revalidate on;
+	        proxy_cache_min_uses 3;
+		proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
+	        proxy_cache_lock on;
+		add_header X-Cache-Status $upstream_cache_status;
+		proxy_cache_bypass $http_pragma;
+	}
+	
+	error_log /var/log/nginx/dimensions.cetb.in.error.log;
+        access_log /var/log/nginx/dimensions.cetb.in.access.log cloudflare;
+
+}
+````
 
 # Writing code
 - Always make a new branch for your feature from master.
