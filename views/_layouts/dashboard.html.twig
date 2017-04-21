@@ -21,6 +21,7 @@
             Hi, {{ user.firstName | capitalize }} <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
+          <li><a href="/account">Account settings</a></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
       </li>
@@ -56,10 +57,10 @@
       <li class="dropdown">
         <ul id="settings-dropdown" class="dropdown-menu">
           <li>
-            <a href="#" tabindex="-1">Account Settings</a>
+            <a href="/account" tabindex="-1">Account Settings</a>
           </li>
           <li>
-            <a href="#" tabindex="-1">Log out</a>
+            <a href="/logout" tabindex="-1">Log out</a>
           </li>
         </ul>
       </li>

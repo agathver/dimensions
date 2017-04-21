@@ -6,6 +6,7 @@ const library = require('./library');
 const events = require('./events');
 const noticeboard = require('./noticeboard');
 const academics = require('./academics');
+const account = require('./account');
 
 const Notice = require('../models/notice');
 const Event = require('../models/event');
@@ -41,5 +42,6 @@ router.use('/library', library);
 router.use('/events', events);
 router.use('/noticeboard', noticeboard);
 router.use('/academics', academics);
+router.use('/account', account);
 
 module.exports = router;

@@ -1,0 +1,121 @@
+{% extends '_layouts/dashboard.html.twig' %}
+{% block title %}Account{% endblock %}
+{% block pageid %}account dashboard{% endblock %}
+{% block main %}
+<div class="account-info-container">
+  <section>
+    <div class="row row-header">
+        <div class="row-left col-md-7">
+          <h1>Manage your account access and security settings</h1>
+          <p>Keeping these settings up-to-date safeguards your account even more.</p>
+        </div>
+        <div class="row-right col-md-5">
+          <img class="img-responsive" src="/images/account_landing_header.png" />
+        </div>
+    </div>
+  </section>
+  <section>
+    <div class="row row-header">
+      <div class="row-left col-md-5">
+        <h1>Signing In</h1>
+        <p>Control your passwords and access tokens. Report any suspected misuse
+          of your account to the sysadmin immediately.</p>
+        <p><b>Make sure you choose a strong password.</b></p>
+      </div>
+      <div class="row-right col-md-7">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2 class="col-md-12">Password</h2>
+            <div class="col-md-12">
+              <a class="action-btn btn btn-sm btn-flat btn-primary" href="#passwordform" data-toggle="collapse">
+                Change password
+              </a>
+            </div>
+            <form action="account/update_password" method="POST" id="passwordform" class="col-md-6 collapse">
+              <div class="form-group">
+                <p><b>Verify your identity</b></p>
+                <p>We need to verify that you are the owber of this account before
+                  allowing a change of password. Please enter your current password to verify yourself.
+                </p>
+              </div>
+              <div class="form-group label-floating">
+                <label for="currentPassword" class="control-label"/>Current password</label>
+                <input required type="password" class="form-control" id="currentPassword" name="currentPassword"  />
+              </div>
+              <div class="form-group">
+                <p><b>Password strength</b></p>
+                <p>Use at least 8 characters.
+                  Don’t use a password from another site,
+                  or something too obvious like your pet’s name.
+                </p>
+              </div>
+              <div class="form-group label-floating">
+                <label for="password" class="control-label"/>New password</label>
+                <input required type="password" class="form-control" id="password" name="password"  />
+              </div>
+              <div class="form-group label-floating">
+                <label for="confirmPassword" class="control-label"/>Confirm password</label>
+                <input required type="password" class="form-control" id="confirmPassword" name="confirmPassword"  />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-raised btn-primary" type="submit">Change password</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="row row-header">
+      <div class="row-left col-md-5">
+        <h1>Contact Information</h1>
+        <p>Review and update your contact information.</p>
+        <p>Having up to date contact information allows us to connect with you when the need arises.</p>
+      </div>
+      <div class="row-right col-md-7">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h2 class="col-md-12">Contact Information</h2>
+            <div class="col-md-12">
+              <table>
+                <tr>
+                  <th>Email:</th>
+                  <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                  <th>Phone:</th>
+                  <td>{{ user.phoneNumber }}</td>
+                <tr>
+              </table>
+              <a class="action-btn btn btn-sm btn-flat btn-primary" href="#contactform" data-toggle="collapse">
+                Change
+              </a>
+            </div>
+            <form action="account/update_contact_details" method="POST" id="contactform" class="col-md-6 collapse">
+              <div class="form-group">
+                <p><b>Verify your email</b></p>
+                <p>
+                  You will be asked to verify your email before the change is made.
+                  You will receive a mail with furthur instructions.
+                </p>
+              </div>
+              <div class="form-group label-floating">
+                <label for="email" class="control-label"/>Email</label>
+                <input required type="email" class="form-control" id="email" name="email" value="{{ user.email }}"  />
+              </div>
+              <div class="form-group label-floating">
+                <label for="phoneNumber" class="control-label"/>Phone number</label>
+                <input required type="tel" class="form-control" id="phoneNumber" name="phoneNumber" value="{{ user.phoneNumber }}" />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-raised btn-primary" type="submit">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../../../lib/auth');
+
 const departments = require('./departments');
 const semesters = require('./semesters');
 const subjects = require('./subjects');
+
+router.use(auth.granted('academic_admin'));
 
 /* GET users listing. */
 router.get('/', function(req, res) {
