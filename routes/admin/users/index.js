@@ -2,8 +2,11 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 
-const utils = require('../../lib/utils');
-const User = require('../../models/user');
+const utils = require('../../../lib/utils');
+const students = require('./students');
+const faculty = require('./faculty');
+
+const User = require('../../../models/user');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -39,5 +42,8 @@ router.post('/', function (req, res) {
       req.flash('error', error);
     });
 });
+
+router.use('/students', students);
+router.use('/faculty', faculty);
 
 module.exports = router;

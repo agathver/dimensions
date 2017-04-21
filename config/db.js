@@ -4,6 +4,7 @@ var debug = require('debug')('dimensions:dbconnect');
 mongoose.Promise = Promise;
 
 module.exports = function () {
+  // mongoose.set('debug', true);
   return mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1/dimensions').then(() => {
     debug('Established connection to database');
   }).catch((err) => {

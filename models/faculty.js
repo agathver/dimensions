@@ -13,6 +13,6 @@ const schema = mongoose.Schema({
       match: /(S|M|T|W|TH|F|SU) \d\d\:\d\d/
     }
   }]
-});
+}, { discriminatorKey: 'type', timestamps: true });
 
 module.exports = User.discriminator('Faculty', schema);

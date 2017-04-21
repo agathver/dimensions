@@ -37,11 +37,11 @@ const questions = [
     message: 'Group',
     choices: [{
       name: 'Faculty',
-      value: 'faculty'
+      value: 'Faculty'
     },
     {
       name: 'Student',
-      value: 'student'
+      value: 'Student'
     },
     {
       name: 'Staff',

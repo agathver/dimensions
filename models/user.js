@@ -28,10 +28,6 @@ const userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Department'
   },
-  type: {
-    type: String,
-    enum: ['student', 'faculty', 'staff', 'admin']
-  },
   groups: [{
     type: String,
     enum: ['library_admin', 'academic_admin', 'noticeboard', 'wheel']
