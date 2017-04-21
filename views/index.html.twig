@@ -1,7 +1,6 @@
 {% extends '_layouts/dashboard.html.twig' %}
 {% block title %}Dimensions{% endblock %}
-{% block pageid %}dashboard{% endblock %}
-
+{% block pageid %}dashboard {% endblock %}
 {% block main %}
 <div class="user-dashboard">
   <div class="user-stream col-md-6">
@@ -15,8 +14,7 @@
         <footer class="post-footer">
           <div class="btn-group btn-sm">
             {% if notice.link %}
-            <a href="{{ notice.link }}" class="btn btn-flat btn-sm btn-info">Details</a>
-            {% endif %}
+            <a href="{{ notice.link }}" class="btn btn-flat btn-sm btn-info">Details</a> {% endif %}
             <button class="btn btn-flat btn-sm"><i class="material-icons">star</i></button>
             <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
           </div>
@@ -59,26 +57,25 @@
         <div class="post-body">
           <div class="post notice">
             <div class="post-content">
-            <div class="post-body">
-              <h3>{{ notice.title }}</h3>
-              <p>{{ notice.content }}</p>
-            </div>
-            <footer class="post-footer">
-              <div class="btn-group btn-sm">
-                {% if notice.link %}
-                <a href="{{ notice.link }}" class="btn btn-flat btn-info">Details</a>
-                {% endif %}
-                <button class="btn btn-flat btn-sm"><i class="material-icons">star</i></button>
-                <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
+              <div class="post-body">
+                <h3>{{ notice.title }}</h3>
+                <p>{{ notice.content }}</p>
               </div>
-            </footer>
+              <footer class="post-footer">
+                <div class="btn-group btn-sm">
+                  {% if notice.link %}
+                  <a href="{{ notice.link }}" class="btn btn-flat btn-info">Details</a> {% endif %}
+                  <button class="btn btn-flat btn-sm"><i class="material-icons">star</i></button>
+                  <button class="btn btn-flat btn-sm"><i class="material-icons">comment</i></button>
+                </div>
+              </footer>
+            </div>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-
   <div class="user-secondary-stream col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -86,7 +83,6 @@
       </div>
       <div class="panel-body">All caught up!</div>
     </div>
-  </div>
   </div>
 </div>
 {% endblock %}
