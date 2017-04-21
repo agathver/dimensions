@@ -18,9 +18,10 @@ router.get('/', auth.authenticated, function(req, res, next) {
     [
       Event.find({
         date: {
-          $gt: new Date()
+          $gt: new Date(),
+          $lt: new Date() + 7
         }
-      }).limit(3).sort('-date -createdAt').lean().exec(),
+      }).limit(3).sort('date -createdAt').lean().exec(),
       Notice.find({}).sort('-createdAt').limit(10).lean().exec(),
     ])
     .then((results) => {

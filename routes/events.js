@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
         date: {
           $gt: new Date()
         }
-      }).sort('-date -createdAt').lean().exec(),
+      }).sort('date -createdAt').lean().exec(),
       Event.find({
         date: {
           $lt: new Date()
