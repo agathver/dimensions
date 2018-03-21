@@ -101,28 +101,16 @@ server {
 
 	location / {
 		proxy_cache my_cache;
-                proxy_pass http://127.0.0.1:3000;
+    proxy_pass http://127.0.0.1:3000;
 		proxy_cache_revalidate on;
-	        proxy_cache_min_uses 3;
+	  proxy_cache_min_uses 3;
 		proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
-	        proxy_cache_lock on;
+	  proxy_cache_lock on;
 		add_header X-Cache-Status $upstream_cache_status;
 		proxy_cache_bypass $http_pragma;
 	}
-	
-	error_log /var/log/nginx/dimensions.cetb.in.error.log;
-        access_log /var/log/nginx/dimensions.cetb.in.access.log cloudflare;
-
 }
 ````
-
-# Writing code
-- Always make a new branch for your feature from master.
-  ```
-  git checkout master
-  git pull origin master
-  git checkout -b <feature_name>
-  ```
 
 # Testing
 Make sure you test before pushing
@@ -130,21 +118,4 @@ Make sure you test before pushing
 npm test
 ```
 
-# Pushing code
-After you are satisfied, you should push your code and then open a pull request to master when your code is ready to submit.
-
-For first time push from a new branch
-```
-git push -u origin <branch_name>
-```
-
-Subsequent pushes
-```
-git push
-```
-
-
 Happy coding!
-
-For any questiins feel free to ask Amitosh, +91 7539057001, amitosh.swain@gmail.com
-
